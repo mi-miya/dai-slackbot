@@ -67,22 +67,29 @@ app.event('app_mention', async ({ event, say }) => {
       blocks.push(
         {
           type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: '*文章に不備が見つかりました:*smiling_face_with_tear:',
+          },
+        },
+        {
+          type: 'section',
           text: { type: 'mrkdwn', text: formatResults(fixResults) },
         },
-        {
-          type: 'section',
-          text: {
-            type: 'mrkdwn',
-            text: '*自動修正文書の提案:*',
-          },
-        },
-        {
-          type: 'section',
-          text: {
-            type: 'mrkdwn',
-            text: fixResults[0].output,
-          },
-        }
+        // {
+        //   type: 'section',
+        //   text: {
+        //     type: 'mrkdwn',
+        //     text: '*自動修正文書の提案:*',
+        //   },
+        // },
+        // {
+        //   type: 'section',
+        //   text: {
+        //     type: 'mrkdwn',
+        //     text: fixResults[0].output,
+        //   },
+        // }
       )
     } else {
       blocks.push(
