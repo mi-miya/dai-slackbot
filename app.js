@@ -69,7 +69,7 @@ app.event('app_mention', async ({ event, say }) => {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: '*文章に不備が見つかりました:*smiling_face_with_tear:',
+            text: '*文章に不備が見つかりました*:smiling_face_with_tear:',
           },
         },
         {
