@@ -1,0 +1,56 @@
+{
+  "filters": {},
+  "rules": {
+    "preset-ja-spacing": true,
+    // 一文に利用できる 「、」の数を制限する default => 4
+    "textlint-rule-max-ten": true,
+    // 漢字が連続する西大寺文字数を制限する default => 6
+    // "textlint-rule-max-kanji-continuous-len": {
+    //   max: 7,
+    // },
+    // 敬体(ですます調)と常体(である調)の混在をチェックする
+    "textlint-rule-no-mix-dearu-desumasu": true,
+    // 1つの文中に同じ助詞が連続して出てくるのをチェックする
+    "no-doubled-joshi": {
+      "allow": [
+        "も"
+      ]
+    },
+    // 二重否定を検出する
+    "no-double-negative-ja": true,
+    // 半角カナの利用を禁止する
+    "no-hankaku-kana": true,
+    // 弱い日本語表現の利用を禁止する(～と思う・～かもしれない等)
+    // "ja-no-weak-phrase": true,
+    // 冗長な表現を禁止する
+    "ja-no-redundant-expression": true,
+    // よくある誤用をチェックする
+    "ja-no-abusage": true,
+    // 全角と半角アルファベットを混在をチェックする default => 半角
+    "no-mixed-zenkaku-and-hankaku-alphabet": true,
+    // センテンスの文字数をチェックする
+    "sentence-length": {
+      "max": 120
+    },
+    // ら抜き言葉を検出する
+    "no-dropping-the-ra": true,
+    // 同じ接続詞が連続して出現していないかどうかをチェックする
+    "no-doubled-conjunction": true,
+    // パラグラフの末尾に必ず句点記号を付けていることをチェックする
+    //"ja-no-mixed-period": true,
+    // 不自然なアルファベットを検知する
+    "ja-unnatural-alphabet": true,
+    // サ抜き、サ入れ表現の誤用をチェックする
+    "@textlint-ja/textlint-rule-no-insert-dropping-sa": true,
+    // 常用漢字または人名用漢字であることをチェックする
+    // "ja-joyo-or-jinmeiyo-kanji": true,
+    // 不適切表現をチェックする
+    "ja-no-inappropriate-words": true,
+    // 表記揺れチェック
+    "prh": {
+      "rulePaths": [
+        "./prh/import.yml"
+      ]
+    }
+  }
+}

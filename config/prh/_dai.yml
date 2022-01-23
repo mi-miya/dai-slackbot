@@ -1,0 +1,130 @@
+version: 1
+
+meta:
+  - title: Dai用文言ガイドライン
+
+rules:
+  - expected: 行な$1
+    patterns: /行(って|い|う)/
+    specs:
+      - from: 行く
+        to:   行く
+      - from: 行う
+        to:   行なう
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: かかわらず
+    patterns: /[関拘係](わ)?らず/
+    specs:
+      - from: 関わらず
+        to:   かかわらず
+      - from: 関らず
+        to:   かかわらず
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: ウイルス
+    patterns: ウィルス
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: 子供
+    patterns:
+      - 子ども
+      - こども
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: さらに
+    patterns: 更に
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: しいて
+    patterns: 強いて
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: 障害
+    patterns:
+      - 障がい
+      - 障碍
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: 小スペース
+    patterns:
+      - 省スペース
+      - 少スペース
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: ショッピングセンター
+    patterns: ショッピングモール
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: スイーツ
+    patterns:
+      - スウィーツ
+      - スィーツ
+
+  - expected: ため
+    patterns: /(?<!行)為/
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: かつ
+    patterns: 且つ
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: なおかつ
+    patterns:
+      - 尚かつ
+      - 尚且つ
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: ピザ
+    patterns: ピッツァ
+    prh: Daiの文言ガイドラインに反しています。
+
+  # 半角()の使用不可
+  - expected: （$1）
+    patterns:  /\(([^)]+)\)/
+    specs:
+      - from: (そのとおり)
+        to:   （そのとおり）
+    prh: 'Daiガイドライン：カッコは全角にしてください。'
+
+  - expected: フランチャイズ
+    patterns: FC
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: フランチャイズWEBリポート
+    patterns: /(フランチャイズ)?(([Ww][Ee][Bb])|ウェブ)?リポート/
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: もうか
+    patterns: 儲か
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: もちい
+    patterns: 用い
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: ともな$1
+    patterns: /伴(って|い|う)/
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: $1月
+    patterns: /(ヵ|カ|ケ|か|箇)月/
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: アイデア
+    patterns: アイディア
+    prh: Daiの文言ガイドラインに反しています。
+  
+  - expected: あらかじめ
+    patterns: 予め
+    prh: Daiの文言ガイドラインに反しています。
+  
+  - expected: コミュニケーション
+    patterns: 
+      - コミニュケーション
+      - コミニケーション
+    prh: Daiの文言ガイドラインに反しています。
+  
+  - expected: いったん
+    patterns: 一旦
+    prh: Daiの文言ガイドラインに反しています。
