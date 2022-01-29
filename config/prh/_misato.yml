@@ -1,0 +1,57 @@
+version: 1
+
+meta:
+  - title: みさとのオリジナルルール
+
+rules:
+  # 半角()の使用不可
+  - expected: （$1）
+    patterns:  /\(([^)]+)\)/
+    specs:
+      - from: (そのとおり)
+        to:   （そのとおり）
+    prh: Daiの文言ガイドラインに反しています。
+
+  - expected: 6ヶ月
+    patterns: 半年
+    prh: みさとのルール
+
+  - expected: 1$1
+    patterns: /一(ヶ月|回|月|つ|個)/
+    prh: みさとのルール
+
+  - expected: 2$1
+    patterns: /二(ヶ月|回|月|つ|個)/
+    prh: みさとのルール
+
+  - expected: 3$1
+    patterns: /三(ヶ月|回|月|つ|個)/
+    prh: みさとのルール
+
+  - expected: 4$1
+    patterns: /四(ヶ月|回|月|つ|個)/
+    prh: みさとのルール
+
+  - expected: 5$1
+    patterns: /五(ヶ月|回|月|つ|個)/
+    prh: みさとのルール
+
+  - expected: 6$1
+    patterns: /六(ヶ月|回|月|つ|個)/
+    prh: みさとのルール
+
+  - expected: 7$1
+    patterns: /七(ヶ月|回|月|つ|個)/
+    prh: みさとのルール
+
+  - expected: 8$1
+    patterns: /八(ヶ月|回|月|つ|個)/
+    prh: みさとのルール
+
+  - expected: 9$1
+    patterns: /九(ヶ月|回|月|つ|個)/
+    prh: みさとのルール
+
+  - expected: 10$1
+    patterns: /十(ヶ月|回|月|つ|個)/
+    prh: みさとのルール
