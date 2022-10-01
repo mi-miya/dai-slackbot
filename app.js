@@ -17,7 +17,7 @@ const editResults = (results, replace) => {
   const messages = results[0].messages.reverse()
   let output = ''
   messages.forEach((message) => {
-    output = `${replace.slice(0, message.fix.range[1])}（\`${message.fix.text}\`）${replace.slice(message.fix.range[1])}`
+    output = `${replace.slice(0, message.fix.range[1])} \`${message.fix.text}\` ${replace.slice(message.fix.range[1])}`
   })
   return `${output}\n`
 }
