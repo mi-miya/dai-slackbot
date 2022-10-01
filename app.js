@@ -30,7 +30,7 @@ const engine = new TextFixEngine({
   configFile: path.join(__dirname, 'config/.textlintrc'),
 })
 
-app.event('app_mention', async ({ event, say }) => {
+app.event('app_mention', async ({ event, context }) => {
   let blocks = []
   blocks.push(
     {
@@ -42,13 +42,6 @@ app.event('app_mention', async ({ event, say }) => {
     },
     {
       type: 'divider',
-    },
-    {
-      type: 'section',
-      text: {
-        type: 'mrkdwn',
-        text: '*文書のチェック結果:*',
-      }
     }
   )
   try {
@@ -95,12 +88,20 @@ app.event('app_mention', async ({ event, say }) => {
       blocks.push(
         {
           type: 'section',
-          text: { type: 'mrkdwn', text: '入力された文書にエラーは見つかりませんでした:+1:' },
+          text: {
+            type: 'mrkdwn',
+            text: '入力された文書にエラーは見つかりませんでした:+1:'
+          }
         }
       )
     }
-    await say({
-      blocks
+    app.client.chat.postMessage({
+      token: context.botToken,
+      channel: event.channel,
+      thread_ts: event.ts,
+      blocks: [
+        ...blocks
+      ]
     })
   } catch (error) {
     throw console.log(error)
