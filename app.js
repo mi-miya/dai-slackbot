@@ -10,13 +10,23 @@ const formatResults = (results) => {
   messages.forEach((message) => {
     let severity = ''
     if (message.fatal || message.severity === 2) {
-      severity = 'error'
+      severity = 'ダメ'
     } else {
-      severity = 'warning'
+      severity = '注意'
     }
     output += `[${message.line}:${message.column} ${severity}] ${message.message}\n`
   })
   return '```\n' + `${output}` + '```\n'
+}
+
+const editResults = (results, replace) => {
+  const messages = results[0].messages.reverse()
+  let output = replace
+  messages.forEach((message) => {
+    const index = message.index + message.fix.text.length - 1
+    output = `${output.slice(0, index)} *( ${message.fix.text} )* ${output.slice(index)}`
+  })
+  return `${output}\n`
 }
 
 // アプリ初期化
@@ -37,7 +47,7 @@ app.event('app_mention', async ({ event, context }) => {
       type: 'section',
       text: {
         type: 'mrkdwn',
-        text: '文書チェックが完了しました:tada:',
+        text: '文書チェックが完了しました',
       },
     },
     {
@@ -53,7 +63,10 @@ app.event('app_mention', async ({ event, context }) => {
       blocks.push(
         {
           type: 'section',
-          text: { type: 'mrkdwn', text: 'おや？テキストの指定が無いですね。' }
+          text: {
+            type: 'mrkdwn',
+            text: 'おや？テキストの指定が無いですね。'
+          }
         }
       )
     } else if (engine.isErrorResults(fixResults)) {
@@ -67,22 +80,30 @@ app.event('app_mention', async ({ event, context }) => {
         },
         {
           type: 'section',
-          text: { type: 'mrkdwn', text: formatResults(fixResults) },
+          text: {
+            type: 'mrkdwn',
+            text: formatResults(fixResults)
+            // text: engine.formatResults(fixResults)
+          },
         },
-        // {
-        //   type: 'section',
-        //   text: {
-        //     type: 'mrkdwn',
-        //     text: '*自動修正文書の提案:*',
-        //   },
-        // },
-        // {
-        //   type: 'section',
-        //   text: {
-        //     type: 'mrkdwn',
-        //     text: fixResults[0].output,
-        //   },
-        // }
+        {
+          type: 'divider',
+        },
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: '*修正のご提案:small_red_triangle_down:*',
+          },
+        },
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            // text: fixResults[0].output,
+            text: editResults(fixResults, replaceText)
+          },
+        },
       )
     } else {
       blocks.push(
@@ -90,7 +111,7 @@ app.event('app_mention', async ({ event, context }) => {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: '入力された文書にエラーは見つかりませんでした:+1:'
+            text: '入力された文書に問題は見つかりませんでした:tada:'
           }
         }
       )
