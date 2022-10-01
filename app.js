@@ -8,7 +8,7 @@ const formatResults = (results) => {
   let output = ''
 
   messages.forEach((message) => {
-    output += `[${message.line}:${message.column}] ${message.message}\n`
+    output += `【${message.fix.range[0]}文字目】${message.message}\n`
   })
   return '```\n' + `${output}` + '```\n'
 }
