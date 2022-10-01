@@ -1,7 +1,7 @@
 {
   "filters": {},
   "rules": {
-    "preset-ja-spacing": true,
+    // "preset-ja-spacing": true,
     // 一文に利用できる 「、」の数を制限する default => 4
     "textlint-rule-max-ten": true,
     // 漢字が連続する西大寺文字数を制限する default => 6
