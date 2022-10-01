@@ -8,13 +8,13 @@ const formatResults = (results) => {
   let output = ''
 
   messages.forEach((message) => {
-    let severity = ''
-    if (message.fatal || message.severity === 2) {
-      severity = 'ダメ'
-    } else {
-      severity = '注意'
-    }
-    output += `[${message.line}:${message.column} ${severity}] ${message.message}\n`
+    // let severity = ''
+    // if (message.fatal || message.severity === 2) {
+    //   severity = 'ダメ'
+    // } else {
+    //   severity = '注意'
+    // }
+    output += `[${message.line}:${message.column}] ${message.message}\n`
   })
   return '```\n' + `${output}` + '```\n'
 }
@@ -66,6 +66,16 @@ app.event('app_mention', async ({ event, context }) => {
           text: {
             type: 'mrkdwn',
             text: 'おや？テキストの指定が無いですね。'
+          }
+        }
+      )
+    } else if (replaceText.length > 500) {
+      blocks.push(
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: '500文字以上は勘弁してください…（負荷が高すぎます）'
           }
         }
       )
